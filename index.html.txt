@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HSBJK Wallify</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+  <h1>HSBJK Wallify</h1>
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search wallpapers..."
+    >
+
+    <button onclick="searchWallpapers()">
+      Search
+    </button>
+
+  </div>
+
+</header>
+
+<section class="gallery" id="gallery"></section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
