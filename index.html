@@ -166,6 +166,46 @@ nav button:hover{
   border-radius:12px;
 }
 
+/* PREVIEW CONTROLS */
+
+.preview-controls{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background:rgba(0,0,0,.75);
+  padding:12px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  border-radius:0 0 12px 12px;
+}
+
+.preview-controls select,
+.preview-controls button{
+  padding:8px 16px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.preview-controls select{
+  background:#111827;
+  color:#fff;
+}
+
+.preview-controls button{
+  background:#38bdf8;
+  color:white;
+  cursor:pointer;
+}
+
+.preview-controls select:hover,
+.preview-controls button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 15px #38bdf8;
+}
+
 .modal span{
   position:absolute;
   top:20px;
@@ -245,7 +285,7 @@ placeholder="Search wallpapers like anime, gaming, car..."
 
 <section class="gallery" id="gallery"></section>
 
-<!-- MODAL -->
+<!-- PREVIEW MODAL -->
 
 <div class="modal" id="previewModal">
 
@@ -254,6 +294,24 @@ placeholder="Search wallpapers like anime, gaming, car..."
 <div class="preview-box">
 
 <img id="previewImg">
+
+<div class="preview-controls">
+
+<select id="previewResolution">
+
+<option value="large">HD</option>
+
+<option value="large2x">Full HD</option>
+
+<option value="original">4K</option>
+
+</select>
+
+<button onclick="downloadFromPreview()">
+Download
+</button>
+
+</div>
 
 </div>
 
@@ -281,17 +339,18 @@ const gallery=document.getElementById("gallery");
 const modal=document.getElementById("previewModal");
 const previewImg=document.getElementById("previewImg");
 
-let currentImage="";
+let currentPhoto=null;
 let currentType="desktop";
 
 /* OPEN */
 
-function openPreview(url,type){
+function openPreview(photo,type){
 
-currentImage=url;
+currentPhoto=photo;
+
 currentType=type;
 
-previewImg.src=url;
+previewImg.src=photo.src.large2x;
 
 modal.style.display="flex";
 
@@ -302,6 +361,34 @@ modal.style.display="flex";
 function closePreview(){
 
 modal.style.display="none";
+
+}
+
+/* DOWNLOAD */
+
+async function downloadFromPreview(){
+
+if(!currentPhoto) return;
+
+const quality=
+document.getElementById(
+"previewResolution"
+).value;
+
+const url=
+currentPhoto.src[quality];
+
+const res=await fetch(url);
+
+const blob=await res.blob();
+
+const a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+
+a.download=`HSBJK_Wallpaper.jpg`;
+
+a.click();
 
 }
 
@@ -355,8 +442,14 @@ img.loading="lazy";
 
 img.src=photo.src.large2x;
 
+img.onerror=()=>{
+
+img.src="placeholder.jpg";
+
+};
+
 img.onclick=()=>openPreview(
-photo.src.original,
+photo,
 type
 );
 
