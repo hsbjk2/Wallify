@@ -8,7 +8,7 @@ export default async function handler(req,res){
     const response =
     await fetch(
 
-      `https://api.pexels.com/v1/search?query=${query}&per_page=30`,
+      `https://api.pexels.com/v1/search?query=${query}&per_page=80`,
 
       {
         headers:{
