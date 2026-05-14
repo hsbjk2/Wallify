@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,52 +12,116 @@
   --brand:#22c55e;
   --text:#e5e7eb;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
-body{background:#020617;color:var(--text)}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI,Arial
+}
+
+body{
+  background:#020617;
+  color:var(--text)
+}
 
 /* HEADER */
+
 header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:18px 35px;background:rgba(0,0,0,.45);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 35px;
+  background:rgba(0,0,0,.45);
   backdrop-filter:blur(12px);
-  position:sticky;top:0;z-index:10
+  position:sticky;
+  top:0;
+  z-index:10
 }
+
 nav button{
-  background:none;border:1px solid var(--accent);
+  background:none;
+  border:1px solid var(--accent);
   color:var(--accent);
-  padding:8px 18px;border-radius:20px;
-  cursor:pointer;margin-left:10px;
+  padding:8px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  margin-left:10px;
   transition:.3s
 }
+
 nav button:hover{
   transform:scale(1.1);
   box-shadow:0 0 15px var(--accent)
 }
 
 /* LOGO */
+
 .site-logo{
   height:70px;
   cursor:pointer;
   transition:transform .4s ease, filter .4s ease;
 }
+
 .site-logo:hover{
   transform:scale(1.12);
   filter:drop-shadow(0 0 12px rgba(56,189,248,.9))
 }
-.site-logo:active{transform:scale(.95)}
+
+.site-logo:active{
+  transform:scale(.95)
+}
 
 /* HERO */
-.hero{text-align:center;padding:40px}
+
+.hero{
+  text-align:center;
+  padding:40px
+}
+
+/* SEARCH */
+
+.search-box{
+  display:flex;
+  justify-content:center;
+  margin-top:25px;
+}
+
+#searchInput{
+  width:90%;
+  max-width:650px;
+  padding:15px 22px;
+  border:none;
+  outline:none;
+  border-radius:40px;
+  background:#111827;
+  color:white;
+  font-size:16px;
+  transition:0.3s !important;
+  border:2px solid transparent !important;
+}
+
+#searchInput::placeholder{
+  color:#94a3b8;
+}
+
+#searchInput:focus{
+  border-color:#38bdf8 !important;
+  box-shadow:0 0 30px #38bdf8 !important;
+}
 
 /* GALLERY */
+
 .gallery{
   padding:35px;
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  grid-template-columns:
+  repeat(auto-fill,minmax(260px,1fr));
   gap:25px
 }
 
 /* CARD */
+
 .card{
   background:var(--card);
   border-radius:18px;
@@ -66,16 +129,19 @@ nav button:hover{
   transition:.3s;
   cursor:pointer
 }
+
 .card:hover{
   transform:scale(1.05);
   box-shadow:0 0 25px var(--accent)
 }
+
 .card img{
   width:100%;
   height:190px;
   object-fit:cover;
   display:block
 }
+
 .card-content{
   padding:12px;
   font-size:13px;
@@ -83,25 +149,40 @@ nav button:hover{
 }
 
 /* PREVIEW */
+
 .modal{
-  position:fixed;inset:0;
+  position:fixed;
+  inset:0;
   background:rgba(0,0,0,.95);
-  display:none;justify-content:center;align-items:center;
+  display:none;
+  justify-content:center;
+  align-items:center;
   z-index:999
 }
-.preview-box{position:relative;max-width:90%}
+
+.preview-box{
+  position:relative;
+  max-width:90%
+}
+
 .preview-box img{
   max-width:100%;
   max-height:90vh;
   border-radius:12px
 }
+
 .preview-controls{
-  position:absolute;bottom:0;width:100%;
+  position:absolute;
+  bottom:0;
+  width:100%;
   background:rgba(0,0,0,.75);
   padding:12px;
-  display:flex;justify-content:center;gap:15px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
   border-radius:0 0 12px 12px
 }
+
 .preview-controls select,
 .preview-controls button{
   padding:8px 16px;
@@ -110,24 +191,40 @@ nav button:hover{
   font-weight:bold;
   transition:.3s
 }
-.preview-controls select{background:#111827;color:#fff}
-.preview-controls button{background:var(--accent);cursor:pointer}
+
+.preview-controls select{
+  background:#111827;
+  color:#fff
+}
+
+.preview-controls button{
+  background:var(--accent);
+  cursor:pointer
+}
+
 .preview-controls select:hover,
 .preview-controls button:hover{
   transform:scale(1.1);
   box-shadow:0 0 15px var(--accent)
 }
+
 .modal span{
-  position:absolute;top:20px;right:30px;
-  font-size:30px;cursor:pointer;color:#fff;
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  cursor:pointer;
+  color:#fff;
   transition:.3s
 }
+
 .modal span:hover{
   transform:scale(1.3);
   text-shadow:0 0 15px var(--accent)
 }
 
 /* ABOUT */
+
 .about{
   max-width:900px;
   margin:50px auto;
@@ -135,132 +232,146 @@ nav button:hover{
   text-align:center;
   opacity:.8
 }
-footer{text-align:center;padding:20px;opacity:.6}
+
+footer{
+  text-align:center;
+  padding:20px;
+  opacity:.6
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="logo2.png" alt="HSBJK Wallify" class="site-logo">
+
+  <img
+    src="logo2.png"
+    alt="HSBJK Wallify"
+    class="site-logo"
+  >
+
   <nav>
-    <button onclick="filterWallpapers('desktop')">Desktop</button>
-    <button onclick="filterWallpapers('mobile')">Mobile</button>
-    <button onclick="filterWallpapers('all')">All</button>
+
+    <button onclick="filterWallpapers('desktop')">
+      Desktop
+    </button>
+
+    <button onclick="filterWallpapers('mobile')">
+      Mobile
+    </button>
+
+    <button onclick="filterWallpapers('all')">
+      All
+    </button>
+
   </nav>
+
 </header>
 
 <section class="hero">
+
   <h2>Premium Wallpapers</h2>
-  <p>Download ultra-high-quality wallpapers for desktop and mobile devices</p>
+
+  <p>
+    Download ultra-high-quality wallpapers
+    for desktop and mobile devices
+  </p>
+
+  <!-- SEARCH -->
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search wallpapers like anime, gaming, car..."
+    >
+
+  </div>
+
 </section>
 
 <section class="gallery" id="gallery"></section>
 
 <!-- PREVIEW MODAL -->
+
 <div class="modal" id="previewModal">
+
   <span onclick="closePreview()">✕</span>
+
   <div class="preview-box">
+
     <img id="previewImg">
+
     <div class="preview-controls">
+
       <select id="previewResolution">
+
         <option value="720p">720p</option>
+
         <option value="1080p">1080p</option>
+
         <option value="2K">2K</option>
+
         <option value="4K">4K</option>
+
       </select>
-      <button onclick="downloadFromPreview()">Download</button>
+
+      <button onclick="downloadFromPreview()">
+        Download
+      </button>
+
     </div>
+
   </div>
+
 </div>
 
 <section class="about">
+
   <h3>About HSBJK Wallify</h3>
+
   <p>
-    HSBJK Wallify guarantees a smooth browsing experience by preventing
-    broken or blank wallpapers using a permanent fallback system.
+    HSBJK Wallify guarantees a smooth browsing
+    experience by preventing broken or blank
+    wallpapers using a permanent fallback system.
   </p>
+
 </section>
 
-<footer>© 2026 HSBJK Wallify</footer>
+<footer>
+  © 2026 HSBJK Wallify
+</footer>
 
 <script>
 
 const gallery=document.getElementById("gallery");
 const modal=document.getElementById("previewModal");
 const previewImg=document.getElementById("previewImg");
-const previewRes=document.getElementById("previewResolution");
 
 let currentImage="";
 let currentType="desktop";
-
-/* SEARCH BAR */
-
-const hero=document.querySelector(".hero");
-
-hero.insertAdjacentHTML(
-  "beforeend",
-  `
-
-<div style="
-margin-top:25px;
-display:flex;
-justify-content:center;
-">
-
-<input
-id="searchInput"
-placeholder="Search wallpapers..."
-style="
-width:90%;
-max-width:650px;
-padding:15px 20px;
-border:none;
-outline:none;
-border-radius:40px;
-background:#111827;
-color:white;
-font-size:16px;
-transition:.3s;
-border:2px solid transparent;
-"
-
-onfocus="
-this.style.borderColor='#38bdf8';
-this.style.boxShadow='0 0 25px #38bdf8';
-"
-
-onblur="
-this.style.borderColor='transparent';
-this.style.boxShadow='none';
-"
-
->
-
-</div>
-
-`
-);
 
 /* OPEN PREVIEW */
 
 function openPreview(url,type){
 
-currentImage=url;
+  currentImage=url;
 
-currentType=type;
+  currentType=type;
 
-previewImg.src=url;
+  previewImg.src=url;
 
-modal.style.display="flex";
+  modal.style.display="flex";
 
 }
 
-/* CLOSE */
+/* CLOSE PREVIEW */
 
 function closePreview(){
 
-modal.style.display="none";
+  modal.style.display="none";
 
 }
 
@@ -268,25 +379,27 @@ modal.style.display="none";
 
 async function downloadFromPreview(){
 
-if(!currentImage) return;
+  if(!currentImage) return;
 
-const res=await fetch(currentImage);
+  const res=await fetch(currentImage);
 
-const blob=await res.blob();
+  const blob=await res.blob();
 
-const a=document.createElement("a");
+  const a=document.createElement("a");
 
-a.href=URL.createObjectURL(blob);
+  a.href=URL.createObjectURL(blob);
 
-a.download=`HSBJK_Wallpaper.jpg`;
+  a.download="HSBJK_Wallpaper.jpg";
 
-a.click();
+  a.click();
 
 }
 
 /* SEARCH WALLPAPERS */
 
-async function searchWallpapers(query="gaming"){
+async function searchWallpapers(
+query="gaming"
+){
 
 gallery.innerHTML=`
 
@@ -305,7 +418,7 @@ try{
 
 const res=await fetch(
 
-`/api/search?q=${query}`
+`/api/search?q=${query}&t=${Date.now()}`
 
 );
 
@@ -313,9 +426,7 @@ const data=await res.json();
 
 gallery.innerHTML="";
 
-/* MORE WALLPAPERS */
-
-data.photos.slice(0,80).forEach(photo=>{
+data.photos.forEach(photo=>{
 
 const type=
 photo.width>photo.height
@@ -341,11 +452,8 @@ img.src="placeholder.jpg";
 };
 
 img.onclick=()=>openPreview(
-
 photo.src.original,
-
 type
-
 );
 
 const label=document.createElement("div");
@@ -394,7 +502,7 @@ const value=e.target.value.trim();
 
 if(value.length===0){
 
-searchWallpapers("gaming");
+gallery.innerHTML="";
 
 return;
 
@@ -434,6 +542,552 @@ c.dataset.type===t
 searchWallpapers("gaming");
 
 </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HSBJK Wallify – Premium Wallpapers</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --card:#111827;
+  --accent:#38bdf8;
+  --brand:#22c55e;
+  --text:#e5e7eb;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI,Arial
+}
+
+body{
+  background:#020617;
+  color:var(--text)
+}
+
+/* HEADER */
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 35px;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(12px);
+  position:sticky;
+  top:0;
+  z-index:10
+}
+
+nav button{
+  background:none;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  padding:8px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  margin-left:10px;
+  transition:.3s
+}
+
+nav button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px var(--accent)
+}
+
+/* LOGO */
+
+.site-logo{
+  height:70px;
+  cursor:pointer;
+  transition:transform .4s ease, filter .4s ease;
+}
+
+.site-logo:hover{
+  transform:scale(1.12);
+  filter:drop-shadow(0 0 12px rgba(56,189,248,.9))
+}
+
+.site-logo:active{
+  transform:scale(.95)
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:40px
+}
+
+/* SEARCH */
+
+.search-box{
+  display:flex;
+  justify-content:center;
+  margin-top:25px;
+}
+
+#searchInput{
+  width:90%;
+  max-width:650px;
+  padding:15px 22px;
+  border:none;
+  outline:none;
+  border-radius:40px;
+  background:#111827;
+  color:white;
+  font-size:16px;
+  transition:0.3s !important;
+  border:2px solid transparent !important;
+}
+
+#searchInput::placeholder{
+  color:#94a3b8;
+}
+
+#searchInput:focus{
+  border-color:#38bdf8 !important;
+  box-shadow:0 0 30px #38bdf8 !important;
+}
+
+/* GALLERY */
+
+.gallery{
+  padding:35px;
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fill,minmax(260px,1fr));
+  gap:25px
+}
+
+/* CARD */
+
+.card{
+  background:var(--card);
+  border-radius:18px;
+  overflow:hidden;
+  transition:.3s;
+  cursor:pointer
+}
+
+.card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px var(--accent)
+}
+
+.card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block
+}
+
+.card-content{
+  padding:12px;
+  font-size:13px;
+  opacity:.75
+}
+
+/* PREVIEW */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999
+}
+
+.preview-box{
+  position:relative;
+  max-width:90%
+}
+
+.preview-box img{
+  max-width:100%;
+  max-height:90vh;
+  border-radius:12px
+}
+
+.preview-controls{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background:rgba(0,0,0,.75);
+  padding:12px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  border-radius:0 0 12px 12px
+}
+
+.preview-controls select,
+.preview-controls button{
+  padding:8px 16px;
+  border-radius:20px;
+  border:none;
+  font-weight:bold;
+  transition:.3s
+}
+
+.preview-controls select{
+  background:#111827;
+  color:#fff
+}
+
+.preview-controls button{
+  background:var(--accent);
+  cursor:pointer
+}
+
+.preview-controls select:hover,
+.preview-controls button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px var(--accent)
+}
+
+.modal span{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:30px;
+  cursor:pointer;
+  color:#fff;
+  transition:.3s
+}
+
+.modal span:hover{
+  transform:scale(1.3);
+  text-shadow:0 0 15px var(--accent)
+}
+
+/* ABOUT */
+
+.about{
+  max-width:900px;
+  margin:50px auto;
+  padding:30px;
+  text-align:center;
+  opacity:.8
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  opacity:.6
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <img
+    src="logo2.png"
+    alt="HSBJK Wallify"
+    class="site-logo"
+  >
+
+  <nav>
+
+    <button onclick="filterWallpapers('desktop')">
+      Desktop
+    </button>
+
+    <button onclick="filterWallpapers('mobile')">
+      Mobile
+    </button>
+
+    <button onclick="filterWallpapers('all')">
+      All
+    </button>
+
+  </nav>
+
+</header>
+
+<section class="hero">
+
+  <h2>Premium Wallpapers</h2>
+
+  <p>
+    Download ultra-high-quality wallpapers
+    for desktop and mobile devices
+  </p>
+
+  <!-- SEARCH -->
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search wallpapers like anime, gaming, car..."
+    >
+
+  </div>
+
+</section>
+
+<section class="gallery" id="gallery"></section>
+
+<!-- PREVIEW MODAL -->
+
+<div class="modal" id="previewModal">
+
+  <span onclick="closePreview()">✕</span>
+
+  <div class="preview-box">
+
+    <img id="previewImg">
+
+    <div class="preview-controls">
+
+      <select id="previewResolution">
+
+        <option value="720p">720p</option>
+
+        <option value="1080p">1080p</option>
+
+        <option value="2K">2K</option>
+
+        <option value="4K">4K</option>
+
+      </select>
+
+      <button onclick="downloadFromPreview()">
+        Download
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<section class="about">
+
+  <h3>About HSBJK Wallify</h3>
+
+  <p>
+    HSBJK Wallify guarantees a smooth browsing
+    experience by preventing broken or blank
+    wallpapers using a permanent fallback system.
+  </p>
+
+</section>
+
+<footer>
+  © 2026 HSBJK Wallify
+</footer>
+
+<script>
+
+const gallery=document.getElementById("gallery");
+const modal=document.getElementById("previewModal");
+const previewImg=document.getElementById("previewImg");
+
+let currentImage="";
+let currentType="desktop";
+
+/* OPEN PREVIEW */
+
+function openPreview(url,type){
+
+  currentImage=url;
+
+  currentType=type;
+
+  previewImg.src=url;
+
+  modal.style.display="flex";
+
+}
+
+/* CLOSE PREVIEW */
+
+function closePreview(){
+
+  modal.style.display="none";
+
+}
+
+/* DOWNLOAD */
+
+async function downloadFromPreview(){
+
+  if(!currentImage) return;
+
+  const res=await fetch(currentImage);
+
+  const blob=await res.blob();
+
+  const a=document.createElement("a");
+
+  a.href=URL.createObjectURL(blob);
+
+  a.download="HSBJK_Wallpaper.jpg";
+
+  a.click();
+
+}
+
+/* SEARCH WALLPAPERS */
+
+async function searchWallpapers(
+query="gaming"
+){
+
+gallery.innerHTML=`
+
+<h2 style="
+text-align:center;
+width:100%;
+">
+
+Loading Wallpapers...
+
+</h2>
+
+`;
+
+try{
+
+const res=await fetch(
+
+`/api/search?q=${query}&t=${Date.now()}`
+
+);
+
+const data=await res.json();
+
+gallery.innerHTML="";
+
+data.photos.forEach(photo=>{
+
+const type=
+photo.width>photo.height
+? "desktop"
+: "mobile";
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.dataset.type=type;
+
+const img=document.createElement("img");
+
+img.loading="lazy";
+
+img.src=photo.src.large2x;
+
+img.onerror=()=>{
+
+img.src="placeholder.jpg";
+
+};
+
+img.onclick=()=>openPreview(
+photo.src.original,
+type
+);
+
+const label=document.createElement("div");
+
+label.className="card-content";
+
+label.textContent=
+`${query.toUpperCase()} • ${type}`;
+
+card.appendChild(img);
+
+card.appendChild(label);
+
+gallery.appendChild(card);
+
+});
+
+}catch(err){
+
+gallery.innerHTML=`
+
+<h2 style="
+text-align:center;
+width:100%;
+">
+
+Failed To Load Wallpapers
+
+</h2>
+
+`;
+
+}
+
+}
+
+/* LIVE SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener("input",(e)=>{
+
+const value=e.target.value.trim();
+
+/* EMPTY SEARCH */
+
+if(value.length===0){
+
+gallery.innerHTML="";
+
+return;
+
+}
+
+/* SEARCH */
+
+if(value.length>2){
+
+searchWallpapers(value);
+
+}
+
+});
+
+/* FILTER */
+
+function filterWallpapers(t){
+
+document.querySelectorAll(".card")
+.forEach(c=>{
+
+c.style.display=
+(
+t==="all" ||
+c.dataset.type===t
+)
+? "block"
+: "none";
+
+});
+
+}
+
+/* DEFAULT */
+
+searchWallpapers("nature");
+
+</script>
+
 </body>
 </html>
-
