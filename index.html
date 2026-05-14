@@ -194,7 +194,7 @@ const previewRes=document.getElementById("previewResolution");
 let currentImage="";
 let currentType="desktop";
 
-/* SEARCH BAR ADD */
+/* SEARCH BAR */
 
 const hero=document.querySelector(".hero");
 
@@ -202,29 +202,42 @@ hero.insertAdjacentHTML(
   "beforeend",
   `
 
-  <div style="
-    margin-top:25px;
-    display:flex;
-    justify-content:center;
-  ">
+<div style="
+margin-top:25px;
+display:flex;
+justify-content:center;
+">
 
-    <input
-      id="searchInput"
-      placeholder="Search wallpapers..."
-      style="
-        width:90%;
-        max-width:650px;
-        padding:15px 20px;
-        border:none;
-        outline:none;
-        border-radius:40px;
-        background:#111827;
-        color:white;
-        font-size:16px;
-      "
-    >
+<input
+id="searchInput"
+placeholder="Search wallpapers..."
+style="
+width:90%;
+max-width:650px;
+padding:15px 20px;
+border:none;
+outline:none;
+border-radius:40px;
+background:#111827;
+color:white;
+font-size:16px;
+transition:.3s;
+border:2px solid transparent;
+"
 
-  </div>
+onfocus="
+this.style.borderColor='#38bdf8';
+this.style.boxShadow='0 0 25px #38bdf8';
+"
+
+onblur="
+this.style.borderColor='transparent';
+this.style.boxShadow='none';
+"
+
+>
+
+</div>
 
 `
 );
@@ -233,20 +246,21 @@ hero.insertAdjacentHTML(
 
 function openPreview(url,type){
 
-  currentImage=url;
+currentImage=url;
 
-  currentType=type;
+currentType=type;
 
-  previewImg.src=url;
+previewImg.src=url;
 
-  modal.style.display="flex";
+modal.style.display="flex";
+
 }
 
-/* CLOSE PREVIEW */
+/* CLOSE */
 
 function closePreview(){
 
-  modal.style.display="none";
+modal.style.display="none";
 
 }
 
@@ -254,110 +268,145 @@ function closePreview(){
 
 async function downloadFromPreview(){
 
-  if(!currentImage) return;
+if(!currentImage) return;
 
-  const res=await fetch(currentImage);
+const res=await fetch(currentImage);
 
-  const blob=await res.blob();
+const blob=await res.blob();
 
-  const a=document.createElement("a");
+const a=document.createElement("a");
 
-  a.href=URL.createObjectURL(blob);
+a.href=URL.createObjectURL(blob);
 
-  a.download=`HSBJK_Wallpaper.jpg`;
+a.download=`HSBJK_Wallpaper.jpg`;
 
-  a.click();
+a.click();
 
 }
 
-/* LOAD WALLPAPERS */
+/* SEARCH WALLPAPERS */
 
-async function searchWallpapers(query="wallpaper"){
+async function searchWallpapers(query="gaming"){
 
-  gallery.innerHTML=`
-    <h2 style="text-align:center;width:100%">
-      Loading Wallpapers...
-    </h2>
-  `;
+gallery.innerHTML=`
 
-  try{
+<h2 style="
+text-align:center;
+width:100%;
+">
 
-    const res=await fetch(
-      `/api/search?q=${query}`
-    );
+Loading Wallpapers...
 
-    const data=await res.json();
+</h2>
 
-    gallery.innerHTML="";
+`;
 
-    data.photos.forEach(photo=>{
+try{
 
-      const type=
-      photo.width>photo.height
-      ? "desktop"
-      : "mobile";
+const res=await fetch(
 
-      const card=document.createElement("div");
+`/api/search?q=${query}`
 
-      card.className="card";
+);
 
-      card.dataset.type=type;
+const data=await res.json();
 
-      const img=document.createElement("img");
+gallery.innerHTML="";
 
-      img.loading="lazy";
+/* MORE WALLPAPERS */
 
-      img.src=photo.src.large2x;
+data.photos.slice(0,80).forEach(photo=>{
 
-      img.onerror=()=>{
-        img.src="placeholder.jpg";
-      };
+const type=
+photo.width>photo.height
+? "desktop"
+: "mobile";
 
-      img.onclick=()=>openPreview(
-        photo.src.original,
-        type
-      );
+const card=document.createElement("div");
 
-      const label=document.createElement("div");
+card.className="card";
 
-      label.className="card-content";
+card.dataset.type=type;
 
-      label.textContent=
-      `${query.toUpperCase()} • ${type}`;
+const img=document.createElement("img");
 
-      card.appendChild(img);
+img.loading="lazy";
 
-      card.appendChild(label);
+img.src=photo.src.large2x;
 
-      gallery.appendChild(card);
+img.onerror=()=>{
 
-    });
+img.src="placeholder.jpg";
 
-  }catch(err){
+};
 
-    gallery.innerHTML=`
-      <h2 style="text-align:center;width:100%">
-        Failed To Load Wallpapers
-      </h2>
-    `;
+img.onclick=()=>openPreview(
 
-  }
+photo.src.original,
+
+type
+
+);
+
+const label=document.createElement("div");
+
+label.className="card-content";
+
+label.textContent=
+`${query.toUpperCase()} • ${type}`;
+
+card.appendChild(img);
+
+card.appendChild(label);
+
+gallery.appendChild(card);
+
+});
+
+}catch(err){
+
+gallery.innerHTML=`
+
+<h2 style="
+text-align:center;
+width:100%;
+">
+
+Failed To Load Wallpapers
+
+</h2>
+
+`;
+
+}
+
+}
+
+/* LIVE SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener("input",(e)=>{
+
+const value=e.target.value.trim();
+
+/* EMPTY SEARCH */
+
+if(value.length===0){
+
+searchWallpapers("gaming");
+
+return;
 
 }
 
 /* SEARCH */
 
-document
-.getElementById("searchInput")
-.addEventListener("keyup",(e)=>{
+if(value.length>2){
 
-  const value=e.target.value.trim();
+searchWallpapers(value);
 
-  if(value.length>2){
-
-    searchWallpapers(value);
-
-  }
+}
 
 });
 
@@ -365,18 +414,18 @@ document
 
 function filterWallpapers(t){
 
-  document.querySelectorAll(".card")
-  .forEach(c=>{
+document.querySelectorAll(".card")
+.forEach(c=>{
 
-    c.style.display=
-    (
-      t==="all" ||
-      c.dataset.type===t
-    )
-    ? "block"
-    : "none";
+c.style.display=
+(
+t==="all" ||
+c.dataset.type===t
+)
+? "block"
+: "none";
 
-  });
+});
 
 }
 
@@ -385,7 +434,6 @@ function filterWallpapers(t){
 searchWallpapers("gaming");
 
 </script>
-
 </body>
 </html>
 
